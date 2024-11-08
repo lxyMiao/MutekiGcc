@@ -62,6 +62,7 @@ jobs:
           # Building anything with GCC also requires libgcc.
           make $J all-target-libgcc
           make install-target-libgcc
+          cd ..
           cd shims
           sudo apt install meson -y
           meson setup --prefix "${PREFIXDIR}" --cross-file meson-cross/arm-bestartos build
