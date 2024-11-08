@@ -35,7 +35,7 @@ jobs:
           git clone https://github.com/Project-Muteki/muteki-shims.git shims
           mkdir $GITHUB_WORKSPACE/bestagcc
           export PREFIXDIR="$GITHUB_WORKSPACE/bestagcc"
-          export TARGET="arm-unknown-bestartos"
+          export TARGET="arm-bestaeabi"
           export J="-j `nproc`"
           mkdir binutils-build
           cd binutils-build
@@ -59,7 +59,7 @@ jobs:
           cd ..
           cd shims
           sudo apt install meson -y
-          meson setup --prefix "${PREFIXDIR}" --cross-file meson-cross/arm-bestartos build
+          meson setup --prefix "${PREFIXDIR}" --cross-file meson-cross/arm-none-bestaeabi.ini build
           meson compile -C build
           meson install  -C build
           mkdir newlib-build
