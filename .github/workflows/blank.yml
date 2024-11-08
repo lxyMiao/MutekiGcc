@@ -63,6 +63,7 @@ jobs:
           meson setup --prefix "${PREFIXDIR}" --cross-file meson-cross/arm-none-bestaeabi.ini build
           meson compile -C build
           meson install  -C build
+          cd ..
           mkdir newlib-build
           cd newlib-build
           ../newlib/configure --prefix="${PREFIXDIR}" --target="${TARGET}" 
