@@ -60,7 +60,7 @@ jobs:
           export PATH="${PREFIXDIR}/bin:$PATH"
           cd shims
           sudo apt install meson -y
-          meson setup --prefix "${PREFIXDIR}" --cross-file meson-cross/arm-none-bestaeabi.ini build
+          meson setup --prefix "${PREFIXDIR}/arm-none-bestaeabi" --cross-file meson-cross/arm-none-bestaeabi.ini build
           meson compile -C build
           meson install  -C build
           cd ..
