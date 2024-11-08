@@ -35,7 +35,7 @@ jobs:
           git clone https://github.com/Project-Muteki/muteki-shims.git shims
           mkdir $GITHUB_WORKSPACE/bestagcc
           export PREFIXDIR="$GITHUB_WORKSPACE/bestagcc"
-          export TARGET="arm-bestartos"
+          export TARGET="arm-unknown-bestartos"
           export J="-j `nproc`"
           mkdir binutils-build
           cd binutils-build
