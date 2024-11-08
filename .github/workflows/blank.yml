@@ -37,9 +37,7 @@ jobs:
           export J="-j `nproc`"
           mkdir binutils-build
           cd binutils-build
-          ../binutils/configure --prefix="${PREFIXDIR}" --target="${TARGET}"  \    
-          --disable-multilib --disable-werror --enable-lto --enable-plugins \
-          --with-zlib=yes --disable-nls --disable-unit-tests --disable-shared
+          ../binutils/configure --prefix="${PREFIXDIR}" --target="${TARGET}"  --disable-multilib --disable-werror --enable-lto --enable-plugins --with-zlib=yes  --disable-shared
           make $J
           make install
           cd ..
@@ -49,8 +47,7 @@ jobs:
           cd ../gcc
           ./contrib/download_prerequisites
           cd ../gcc-build
-          ../gcc/configure --prefix="${PREFIXDIR}" --target="${TARGET}" \
-          --enable-languages=c,c++ --disable-multilib --disable-shared
+          ../gcc/configure --prefix="${PREFIXDIR}" --target="${TARGET}" --enable-languages=c,c++ --disable-multilib --disable-shared
           make $J all-gcc
           make install-gcc
           make install-lto-plugin
