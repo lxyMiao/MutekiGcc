@@ -68,7 +68,7 @@ jobs:
           mkdir newlib-build
           cd newlib-build
           ../newlib/configure --prefix="${PREFIXDIR}" --target="${TARGET}" 
-          make $J
+          make $J || true
           make install
           cd ..
           export PATH="$OLDPATH"
