@@ -28,10 +28,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          sudo apt install libmpfr-dev libgmp-dev -y
           git clone https://github.com/Project-Muteki/gcc.git gcc
-          cd gcc
-          ./contrib/download_prerequisites
-          cd ..
           git clone https://github.com/Project-Muteki/binutils-gdb.git binutils
           git clone https://github.com/Project-Muteki/newlib.git newlib
           git clone https://github.com/Project-Muteki/muteki-shims.git shims
