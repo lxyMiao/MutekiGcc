@@ -24,11 +24,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
+      
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
@@ -37,11 +33,11 @@ jobs:
           git clone https://github.com/Project-Muteki/muteki-shims.git shims
           mkdir $GITHUB_WORKSPACE/bestagcc
           export PREFIXDIR="$GITHUB_WORKSPACE/bestagcc"
-          export TARGET="arm-bestartos"
+          export TARGET="arm-unknown-bestartos"
           export J="-j `nproc`"
           mkdir binutils-build
           cd binutils-build
-          ../binutils/configure --prefix="${PREFIXDIR}" --target="arm-bestartos"  \    
+          ../binutils/configure --prefix="${PREFIXDIR}" --target="${TARGET}"  \    
           --disable-multilib --disable-werror --enable-lto --enable-plugins \
           --with-zlib=yes --disable-nls --disable-unit-tests --disable-shared
           make $J
@@ -53,7 +49,7 @@ jobs:
           cd ../gcc
           ./contrib/download_prerequisites
           cd ../gcc-build
-          ../gcc/configure --prefix="${PREFIXDIR}" --target="arm-bestartos" \
+          ../gcc/configure --prefix="${PREFIXDIR}" --target="${TARGET}" \
           --enable-languages=c,c++ --disable-multilib --disable-shared
           make $J all-gcc
           make install-gcc
@@ -70,7 +66,7 @@ jobs:
           meson install  -C build
           mkdir newlib-build
           cd newlib-build
-          ../newlib/configure --prefix="${PREFIXDIR}" --target="arm-bestartos" 
+          ../newlib/configure --prefix="${PREFIXDIR}" --target="${TARGET}" 
           make $J
           make install
           cd ..
