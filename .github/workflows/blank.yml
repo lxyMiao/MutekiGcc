@@ -57,6 +57,7 @@ jobs:
           make $J all-target-libgcc
           make install-target-libgcc
           cd ..
+          export PATH="${PREFIXDIR}/bin:$PATH"
           cd shims
           sudo apt install meson -y
           meson setup --prefix "${PREFIXDIR}" --cross-file meson-cross/arm-none-bestaeabi.ini build
