@@ -37,6 +37,7 @@ jobs:
           export PREFIXDIR="$GITHUB_WORKSPACE/bestagcc"
           export TARGET="arm-none-bestaeabi"
           export J="-j `nproc`"
+          export OLDPATH="$PATH"
           mkdir binutils-build
           cd binutils-build
           ../binutils/configure --prefix="${PREFIXDIR}" --target="${TARGET}"  --disable-multilib --disable-werror --enable-lto --enable-plugins --with-zlib=yes  --disable-shared
@@ -70,6 +71,7 @@ jobs:
           make $J
           make install
           cd ..
+          export PATH="$OLDPATH"
           cd gcc-build
           make $J
           make install
